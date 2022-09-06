@@ -11,7 +11,7 @@ app.get('/:name', (req,res)=>{
 })
 
 app.get('/', (req,res)=>{
-    res.send("Hello");
+    res.send("Hello"+process.env.NAME);
 })
 
 app.listen(port , ()=>{
