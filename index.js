@@ -1,19 +1,12 @@
-const express = require("express");
-const dotenv = require("dotenv");
-
-dotenv.config();
+const app = require('./app');
+const mongoose = require('mongoose');
 
 const port = process.env.PORT || 8000;
-const app = express();
 
-app.get('/:name', (req,res)=>{
-    res.send(req.params.name);
-})
-
-app.get('/', (req,res)=>{
-    res.send("Hello"+process.env.NAME);
-})
+mongoose.connect(process.env.MONGODB, () => {
+    console.log("DB Connected");
+});
 
 app.listen(port , ()=>{
     console.log(`App is running at ${port}`);
-})
+});
